@@ -208,3 +208,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- Python 3.8+ (for ROS 2 Humble compatibility), JavaScript/TypeScript (for Docusaurus), Markdown for content + Docusaurus, ROS 2 Humble, rclpy, OpenAI Agents/ChatKit SDK, FastAPI, Neon Serverless Postgres, Qdrant Cloud (001-ros2-robotic-nervous)
+- Git repository for content, GitHub Pages for deployment, vector database (Qdrant) for RAG, PostgreSQL (Neon) for chatbot state (001-ros2-robotic-nervous)
+
+## Recent Changes
+- 001-ros2-robotic-nervous: Added Python 3.8+ (for ROS 2 Humble compatibility), JavaScript/TypeScript (for Docusaurus), Markdown for content + Docusaurus, ROS 2 Humble, rclpy, OpenAI Agents/ChatKit SDK, FastAPI, Neon Serverless Postgres, Qdrant Cloud

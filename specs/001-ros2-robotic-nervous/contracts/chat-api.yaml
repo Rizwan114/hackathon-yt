@@ -1,0 +1,105 @@
+# Chat API Contract
+
+## Chat Endpoint
+
+### POST /chat
+
+Initiate a conversation with the RAG-powered chatbot about the Physical AI book content.
+
+#### Request
+
+```json
+{
+  "message": "What are ROS 2 nodes?",
+  "module_id": "module-1-ros2",
+  "session_id": "optional-session-id",
+  "selected_text": "optional-text-for-grounding"
+}
+```
+
+#### Response
+
+```json
+{
+  "response": "ROS 2 nodes are...",
+  "sources": [
+    {
+      "module": "module-1-ros2",
+      "chapter": "chapter-2-fundamentals",
+      "section": "ROS 2 node lifecycle and conventions",
+      "content": "Excerpt from the book...",
+      "confidence": 0.92
+    }
+  ],
+  "session_id": "new-or-existing-session-id",
+  "timestamp": "2025-12-10T10:30:00Z"
+}
+```
+
+#### Error Responses
+
+- `400 Bad Request`: Invalid request format
+- `422 Unprocessable Entity`: Message content is empty
+- `500 Internal Server Error`: RAG system unavailable
+
+## Validation Endpoint
+
+### POST /validate
+
+Validate user-selected text against book content for grounding verification.
+
+#### Request
+
+```json
+{
+  "text": "Selected text to validate",
+  "module_id": "module-1-ros2"
+}
+```
+
+#### Response
+
+```json
+{
+  "valid": true,
+  "matches": [
+    {
+      "source": "chapter-2-fundamentals",
+      "similarity": 0.87,
+      "content": "Matching content from book"
+    }
+  ]
+}
+```
+
+## Content Retrieval Endpoint
+
+### POST /retrieve
+
+Retrieve relevant book content based on query for RAG system.
+
+#### Request
+
+```json
+{
+  "query": "Explain ROS 2 communication model",
+  "module_id": "module-1-ros2",
+  "top_k": 5
+}
+```
+
+#### Response
+
+```json
+{
+  "results": [
+    {
+      "module": "module-1-ros2",
+      "chapter": "chapter-2-fundamentals",
+      "section": "ROS 2 communication model (nodes, topics, services)",
+      "content": "Detailed explanation from book...",
+      "similarity_score": 0.94
+    }
+  ]
+}
+```
