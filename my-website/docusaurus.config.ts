@@ -167,20 +167,11 @@ const config: Config = {
     v4: true,
   },
 
-  // ✅ Correct production URL
   url: 'https://hackathon-yt-weld.vercel.app',
-
-  // ✅ Root path
   baseUrl: '/',
 
-  // ✅ Sitemap plugin (correct placement + syntax)
-  plugins: [
-  '@docusaurus/plugin-sitemap',
-],
-
-
-  // organizationName: 'facebook',
-  // projectName: 'docusaurus',
+  // ❌ sitemap plugin YAHAN SE HATA DIYA
+  plugins: [],
 
   onBrokenLinks: 'throw',
 
@@ -196,11 +187,18 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
         },
+
         blog: {
           showReadingTime: true,
         },
+
         theme: {
           customCss: './src/css/custom.css',
+        },
+
+        // ✅ sitemap SIRF yahan rahega
+        sitemap: {
+          changefreq: 'weekly',
         },
       } satisfies Preset.Options,
     ],
@@ -263,3 +261,4 @@ const config: Config = {
 };
 
 export default config;
+

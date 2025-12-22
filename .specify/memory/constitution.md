@@ -1,134 +1,110 @@
 <!-- Sync Impact Report:
-Version change: 1.0.0 → 2.0.0
-List of modified principles: Updated all principles to reflect new project requirements
-Added sections: Technical Standards, Content Standards, RAG Chatbot requirements, ROS 2, Gazebo/Unity, NVIDIA Isaac, Vision-Language-Action systems, Capstone project
-Removed sections: Previous beginner-focused content
+Version change: 2.0.0 → 2.1.0
+List of modified principles: Updated principles to reflect Docusaurus v3 project requirements with TypeScript + React focus
+Added sections: Docusaurus-specific standards, TypeScript/React requirements, CSS styling requirements
+Removed sections: Previous robotics-specific content (ROS 2, NVIDIA Isaac, etc.)
 Templates requiring updates: ⚠ pending - .specify/templates/plan-template.md, .specify/templates/spec-template.md, .specify/templates/tasks-template.md
 Follow-up TODOs: None
 -->
-# Unified Book + Embedded RAG Chatbot for Physical AI & Humanoid Robotics Constitution
+# Docusaurus v3 Project Constitution
 
 ## Vision
-To create a comprehensive, technically accurate educational resource that integrates a complete book on Physical AI & Humanoid Robotics with an embedded RAG-powered chatbot, enabling students and practitioners to learn, implement, and interact with cutting-edge robotics technologies through a unified, reproducible framework.
+To create a comprehensive, technically accurate Docusaurus v3 project that follows modern web development best practices with TypeScript + React, ensuring maintainable, scalable, and performant documentation websites with easy integration capabilities for future technologies like Qdrant, Cohere, and Neon DB.
 
 ## Core Principles
 
-### I. Spec-Driven Accuracy
-All content must adhere strictly to project specs, including Docusaurus structure, Spec-Kit Plus conventions, Claude Code workflows, and integrations with OpenAI Agents/ChatKit SDKs. No content should deviate from established specifications without explicit approval.
+### I. TypeScript + React Standards
+All code must be written in TypeScript + React, ensuring type safety, component reusability, and copy-paste ready examples. Code should follow modern React patterns and TypeScript best practices with proper typing for all props, state, and functions.
 
-### II. Technical Precision
-Explanations must be technically correct for an audience familiar with AI, robotics, simulation, and software engineering. All code examples, configurations, and procedures must reflect current best practices and real-world implementations in 2024-2025.
+### II. Separation of Concerns
+CSS styling must be implemented in separate CSS files, not inline styles or CSS-in-JS. This ensures maintainable, organized styling that follows the principle of separation of concerns between logic and presentation.
 
-### III. Educational Clarity
-Writing should be accessible to upper-division computer science and robotics students (Flesch-Kincaid Grade 12–14 level). Complex concepts must be explained with appropriate technical depth while maintaining clarity and understanding.
+### III. Build Integrity
+No changes should break the existing build process. All implementations must maintain compatibility with the current build pipeline and not introduce breaking changes that would prevent successful compilation or deployment.
 
-### IV. Reproducibility
-All instructions for code, deployment, ROS 2 setups, Gazebo/Unity simulation workflows, Isaac configurations, and chatbot/RAG pipeline must be complete and executable as written. Every example must work in a clean environment without missing dependencies or steps.
+### IV. Minimal Output
+Only output the files necessary for the requested feature. Do not create unnecessary files, folders, or code that doesn't directly serve the immediate requirement. Focus on the smallest viable implementation.
 
-### V. Modularity & Extensibility
-Book chapters, code modules, and chatbot components must follow a consistent structure enabling future expansion. Each module should function independently while integrating seamlessly with the broader system.
+### V. Future Integration Readiness
+Structure code in a way that makes future integration with Qdrant (vector database), Cohere (LLM/embeddings), and Neon DB straightforward and maintainable. Use modular, extensible patterns that accommodate future feature additions.
 
-### VI. Integration Focus
-All components must work together as a unified system. The RAG chatbot must accurately ground responses in book content, ROS 2 components must integrate with simulation environments, and Isaac AI systems must connect with physical robot implementations.
-
-## Content Standards
-
-Coverage must include all required modules:
-
-- ROS 2 robotic nervous system
-- Gazebo & Unity digital twin simulation
-- NVIDIA Isaac AI-robot brain
-- Vision-Language-Action systems
-- Capstone: Autonomous Humanoid
-
-Each chapter must include:
-- Concept explanation
-- Practical code examples
-- Integration with other modules
-- Exercises/labs
-- Evaluation checkpoints
-
-All robotics content must reflect current practice in 2024–2025.
+### VI. Docusaurus v3 Compliance
+All implementations must follow Docusaurus v3 standards, conventions, and best practices. Components should integrate seamlessly with Docusaurus' plugin system, theming, and navigation structures.
 
 ## Technical Standards
 
-### Book Framework
-Must be written and structured in Docusaurus with proper navigation, search, and responsive design.
+### Framework Requirements
+- All components must be written in TypeScript with proper type definitions
+- React components should follow functional component patterns with hooks
+- Strict TypeScript configuration with noImplicitAny enabled
+- Proper error boundaries and loading states where appropriate
 
-### Tooling
-Must use Spec-Kit Plus + Claude Code for generation, editing, and maintenance of all content and code.
-
-### Deployment
-Must deploy to GitHub Pages with a reproducible pipeline that can be executed from a clean environment.
-
-### RAG Chatbot Requirements
-Built using OpenAI Agents/ChatKit SDK, FastAPI, Neon Serverless Postgres, and Qdrant Cloud Free Tier.
-
-Must support:
-- Answering questions about the book
-- Grounding responses strictly in retrieved sections
-- Restricting answers to user-selected text when applicable
+### Styling Standards
+- CSS files must be separate from component files
+- Use modular, reusable class names following BEM or similar methodology
+- Leverage Docusaurus' theme system when possible
+- Ensure responsive design for all components
 
 ### Code Quality Standards
-- All examples must run, compile, or launch as stated
-- ROS 2 examples must use rclpy
-- Gazebo and Unity scenes must include minimal reproducible configurations
-- Isaac workflows must be testable in a standard GPU environment
+- All code must be copy-paste ready without requiring modifications
+- Components should be self-contained with clear props interfaces
+- Follow React and TypeScript best practices and conventions
+- Proper documentation and comments for complex logic
 
-### Documentation Standards
-- Every code snippet must be validated
-- All factual claims must cite authoritative technical sources (ROS docs, NVIDIA Isaac docs, robotics papers)
-- Citation format: APA
-- Minimum 20 sources, at least 40% peer-reviewed
+### Integration Readiness
+- Design components with extensibility in mind for future Qdrant integration
+- Structure data models to support Cohere embeddings and LLM features
+- Prepare database schemas and interfaces for Neon DB integration
+- Use environment variables for external service configurations
 
 ## Constraints
 
-- Book Length: Equivalent of 25,000–40,000 words across Docusaurus pages
-- All chapters must be spec-complete and free of placeholder text
-- Zero hallucinated APIs, functions, ROS packages, or Isaac features
-- RAG chatbot responses must not invent content not found in book text
-- All code examples must run in standard Python environments (3.8+) with common robotics libraries
-- Dependencies must be well-maintained and available on standard package managers
+- All code must maintain backward compatibility with existing build
+- No inline styles allowed - CSS must be in separate files only
+- TypeScript compilation must pass without errors
+- Docusaurus build process must complete successfully
+- Dependencies must be well-maintained and compatible with Docusaurus v3
+- Component implementations must be minimal and focused
 
 ## Brand Voice
 
-- Technically authoritative yet approachable
-- Precise and accurate in technical descriptions
-- Encouraging of experimentation and learning
-- Professional tone appropriate for advanced students
-- Clear distinction between theoretical concepts and practical implementations
-- Inclusive language that welcomes diverse technical backgrounds
+- Technical accuracy and clarity
+- Modern web development best practices focus
+- Approachable yet professional tone
+- Clear distinction between examples and production-ready code
+- Emphasis on maintainability and extensibility
 
 ## Development Workflow
 
-- All content undergoes technical accuracy verification before publication
-- Code examples must be tested in clean environments
-- Documentation structure follows Docusaurus best practices
-- Regular integration testing of all components
-- Validation of RAG chatbot retrieval accuracy
-- Peer review by domain experts for technical correctness
+- All code undergoes TypeScript compilation verification
+- Components must work in Docusaurus v3 environment
+- CSS integration must be tested for proper styling
+- Code examples must be copy-paste functional
+- Integration points for future technologies must be planned
+- Verification that build process remains intact
 
 ## Success Criteria
 
-### Book Completeness
-- All modules covered in depth with practical examples
-- Capstone project fully implemented and documented from end to end
-- Build + deploy pipeline functions from a clean environment
-- All code examples execute as documented
+### Implementation Quality
+- All TypeScript code compiles without errors
+- React components render correctly in Docusaurus context
+- CSS styling applied properly from separate files
+- No breaking changes to existing functionality
 
-### Chatbot Functionality
-- Correct grounding: answers based only on book text or selected text
-- Retrieval accuracy verified through evaluation tests
-- Database (Neon) and vector store (Qdrant) integration fully functional
-- Natural conversation flow with appropriate context management
+### Integration Readiness
+- Qdrant integration points properly structured
+- Cohere embedding interfaces prepared
+- Neon DB connection patterns established
+- Future expansion capabilities clearly defined
 
-### Integration Quality
-- Seamless interaction between book content and chatbot responses
-- Cross-module functionality working as specified
-- Deployment pipeline executes without manual intervention
+### Code Standards
+- Copy-paste ready components with clear examples
+- Proper TypeScript typing throughout
+- Separate CSS files with organized styling
+- Minimal, focused implementations without bloat
 
 ## Governance
 
-This constitution serves as the guiding document for all Physical AI & Humanoid Robotics book and chatbot development. All content, code, and documentation must align with these principles. Changes to this constitution require explicit approval and documentation of the reasoning. All contributors must acknowledge and follow these principles when creating content for the project.
+This constitution serves as the guiding document for all Docusaurus v3 project development. All code, components, and documentation must align with these principles. Changes to this constitution require explicit approval and documentation of the reasoning. All contributors must acknowledge and follow these principles when creating content for the project.
 
-**Version**: 2.0.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
+**Version**: 2.1.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-23
