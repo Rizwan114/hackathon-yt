@@ -1,0 +1,133 @@
+openapi: 3.0.0
+info:
+  title: Book-Based Chatbot API
+  version: 1.0.0
+  description: API for the book-based chatbot that ensures consistent behavior between terminal and browser interfaces
+
+paths:
+  /chat:
+    post:
+      summary: Process a chat query and return a response based on book content
+      description: Handles chat queries from both terminal and browser interfaces, ensuring consistent book content-based responses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful response containing book-based answer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Bad request due to invalid query
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Check the health status of the chatbot service
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+components:
+  schemas:
+    ChatRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The user's query
+          example: "What is the main theme of the book?"
+        interface_type:
+          type: string
+          description: The interface making the request (for debugging)
+          enum: [terminal, browser]
+          example: "browser"
+        session_id:
+          type: string
+          description: Session identifier for conversation context
+          example: "session_12345"
+
+    ChatResponse:
+      type: object
+      required:
+        - response
+        - book_content_used
+      properties:
+        response:
+          type: string
+          description: The chatbot's response based on book content
+          example: "The main theme of the book is the importance of knowledge and learning."
+        sources:
+          type: array
+          items:
+            type: string
+          description: List of book content sources used to generate the response
+          example: ["chapter_1", "introduction"]
+        book_content_used:
+          type: boolean
+          description: Indicates if book content was used in the response
+          example: true
+        confidence:
+          type: number
+          format: float
+          description: Confidence level in the book-based response
+          minimum: 0
+          maximum: 1
+          example: 0.95
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Invalid query format"
+        code:
+          type: string
+          description: Error code
+          example: "BAD_REQUEST"
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          description: Health status
+          enum: [healthy, unhealthy]
+          example: "healthy"
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the health check
+          example: "2025-12-26T10:00:00Z"
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Optional authentication for the API

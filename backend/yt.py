@@ -2,7 +2,7 @@ import cohere
 from qdrant_client import QdrantClient
 
 
-cohere_client = cohere.Client("pxLHYWZhJilWoVpNolEYMcPRuoFt6C1TYclCtwjS")
+cohere_client = cohere.Client("Weyiywa7HxvabgJtc96onPL7rLTvQGsdmvLzYaCC")
 
 
 qdrant = QdrantClient(
