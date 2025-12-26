@@ -2,7 +2,7 @@
  * API service for chat functionality
  */
 class ChatAPI {
-  constructor(baseURL = 'http://localhost:8000') {
+  constructor(baseURL = 'https://rizwanbaloch-deploy-hack-yt.hf.space') {
     this.baseURL = baseURL;
   }
 
